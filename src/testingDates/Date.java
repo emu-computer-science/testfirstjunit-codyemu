@@ -58,18 +58,23 @@ public class Date
         }
     }
 
-    public void setDate(String monthString, int day, int year)
+    public Date setDate(String monthString, int day, int year)
     {
-        if (dateOK(monthString, day, year))
+        int[] daysInMonth = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+        int monthIndex = getMonth() - 1;
+        
+        if (dateOK(monthString, day, year) && daysInMonth[monthIndex] <= day)
         {
             this.month = monthString;
             this.day = day;
             this.year = year;
+            return this;
         }
         else
         {
-            System.out.println("Fatal Error in setDate(String,int, int)");
-            System.exit(0);
+        	return null;
+           // System.out.println("Fatal Error in setDate(String,int, int)");
+           // System.exit(0);
         }
     }
 
@@ -254,7 +259,21 @@ public class Date
     }
     
     public Date addOneDay(){
-    	   System.out.println("Date.addOneDay() is not yet implemented.");
+            int[] daysInMonth = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+            int monthIndex = getMonth() - 1;
+            
+            if (day < daysInMonth[monthIndex]) {
+                day++;
+            } else {
+                day = 1;
+                if (monthIndex == 11) {
+                    month = "January";
+                    year++;
+                } else {
+                    month = monthString(monthIndex + 2);
+                }
+            return this;
+        }
 		return null;
     	}
     

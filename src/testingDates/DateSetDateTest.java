@@ -21,16 +21,16 @@ public class DateSetDateTest {
         Date bob = new Date(5, 10, 2024);
         
         //invalid day
-        bob.setDate(2, 30, 2024);
+        bob.setDate("February", 30, 2024);
         assertEquals("May 10, 2024", bob.toString());
         //invalid day
-        bob.setDate(4, 31, 2023);
+        bob.setDate("May", 32, 2023);
         assertEquals("May 10, 2024", bob.toString());
         //invalid month
-        bob.setDate(13, 10, 2023);
+        bob.setDate("InvalidMonth", 10, 2023);
         assertEquals("May 10, 2024", bob.toString());
         //invalid year
-        bob.setDate(5, 15, 999);
+        bob.setDate("March", 15, 999);
         assertEquals("May 10, 2024", bob.toString());
     }
 
